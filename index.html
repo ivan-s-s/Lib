@@ -6,11 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/14eb71cf09.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </head>
 
 <body>
+    <header>
+        <div class="navbar">
+            <h1>Your Books List</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <table id="libTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Read</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="t_body">
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <form id="form1">
+                <fieldset>
+                    <legend>Add a new book note</legend>
 
+                    <label for="title">Title</label><br>
+                    <input type="text" id="title" name="title" value="" autocomplete="off"><br>
+
+                    <label for="author">Author</label><br>
+                    <input type="text" id="author" name="author" value="" autocomplete="off"><br>
+
+                    <label for="pages">Pages</label><br>
+                    <input type="number" id="pages" name="pages" value="" autocomplete="off"><br>
+
+                    <fieldset>
+                        <legend>Have you read the book?</legend>
+                        <label for="read_yes">Yes</label>
+                        <input type="radio" class="read" id="read_yes" name="read" value="true">
+                        <label for="read_no">No</label>
+                        <input type="radio" class="read" id="read_no" name="read" value="false" checked>
+                    </fieldset><br>
+
+                    <button id="submit" onclick="AddData(event)">Add</button>
+                    <button id="update">Update</button>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 
 </html>
