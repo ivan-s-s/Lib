@@ -51,9 +51,9 @@ function showData() {
         htmlCode += "<td>" + elem.author + "</td>";
         htmlCode += "<td class='pages'>" + elem.pages + "</td>";
         if (elem.read) {
-            htmlCode += "<td class='read'>Read</td>";
+            htmlCode += "<td class='read' onclick='changeStatus(" + index + ")'>Read</td>";
         } else {
-            htmlCode += "<td class='read'>Not Read</td>";
+            htmlCode += "<td class='read' onclick='changeStatus(" + index + ")'>Not Read</td>";
         }
         htmlCode +=
             '<td class="delete"><button onclick="deleteData(' + index + ')" class="btn" title="delete"><i class="fa-solid fa-xmark"></i></button></td>';
@@ -62,6 +62,24 @@ function showData() {
     });
 
     document.querySelector('#libTable tbody').innerHTML = htmlCode;
+}
+
+function changeStatus(index) {
+    let bookList;
+    if (localStorage.getItem("bookList") == null) {
+        bookList = [];
+    } else {
+        bookList = JSON.parse(localStorage.getItem("bookList"));
+    }
+
+    if (bookList[index].read === true) {
+        bookList[index].read = false
+    } else {
+        bookList[index].read = true
+    }
+    localStorage.setItem("bookList", JSON.stringify(bookList));
+
+    showData();
 }
 
 // save entered data to local storage (before you enter submit)

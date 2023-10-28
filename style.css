@@ -184,6 +184,10 @@ main {
     padding-left: 0.7rem;
 }
 
+.read {
+    cursor: pointer;
+}
+
 .formBtns {
     display: flex;
     justify-content: center;
