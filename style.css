@@ -1,7 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #534C45;
+    color: #f7f5f3;
+    min-height: 100dvh;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr 6.7rem;
+    width: 100dvw;
+    height: 100dvh;
+}
+
+header {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-content: center;
+    padding: 0.7rem 0;
+    font-size: 4rem;
+}
+
 main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 4rem;
+}
+
+#libTable {
+    font-size: 1.8rem;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    border: 1px solid #b5a18c;
+}
+
+#libTable td,
+#libTable th {
+    padding: 0.8rem;
+
+}
+
+#libTable tr:nth-child(even) {
+    background-color: #423c35;
+}
+
+#libTable th {
+    padding: 1.2rem 0;
+    background-color: #191410;
+}
+
+.pages,
+.read,
+.delete,
+.update {
+    text-align: center;
+}
+
+#libTable .th-title,
+#libTable .th-author {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.btn {
+    padding: 0.7rem 2rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.delete .btn {
+    font-size: 1.5rem;
+    background-color: #ff4848;
+}
+
+.delete .btn:hover {
+    background-color: #ff1b1b;
+}
+
+.update .btn {
+    font-size: 1.5rem;
+    background-color: #cdcd74;
+}
+
+.update .btn:hover {
+    background-color: #b4b450;
+}
+
+.form {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: .8fr 2fr .8fr;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.formField {
+    border: none;
+    padding: 2rem 30rem;
+}
+
+.formField>legend {
+    text-align: center;
+}
+
+.titleForm {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+#title,
+#author,
+#pages,
+#read {
+    width: 100%;
+    font-size: 2.2rem;
+    padding: .7rem;
+    margin-bottom: 1.5rem;
+}
+
+#read {
+    border: none;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.label {
+    padding-left: 0.7rem;
+}
+
+.formBtns {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.8rem;
+}
+
+button#submit,
+button#update,
+button#clear,
+button#cancel {
+    width: 14rem;
+    padding: 1rem 2.4rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+button#submit,
+button#clear {
+    background-color: #75ac3e;
+}
+
+button#update,
+button#cancel {
+    background-color: #3e96ac;
+}
+
+button#submit:hover,
+button#clear:hover {
+    background-color: #59882a;
+}
+
+button#update:hover,
+button#cancel:hover {
+    background-color: #297a8f;
 }
 
 #update {
     display: none;
+}
+
+#cancel {
+    display: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+footer>a {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+footer>a:visited {
+    color: #fff;
+}
+
+footer>a:hover {
+    color: #48bb3e;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        font-size: 3rem;
+    }
+
+    .formField {
+        padding: 2rem 15rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        font-size: 2.5rem;
+    }
+
+    body {
+        grid-template-rows: 7rem 1fr 6.7rem;
+    }
+
+    .container {
+        margin-top: 1rem;
+    }
+
+    #libTable {
+        width: 100%;
+    }
+
+    .formField {
+        padding: 2rem 10rem;
+    }
 }
