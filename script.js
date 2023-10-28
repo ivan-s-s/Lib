@@ -95,7 +95,6 @@ function AddData(event) {
     event.preventDefault();
     // if (localStorage.getItem('formData')) {
     if (validateForm() == true) {
-
         let formData = JSON.parse(localStorage.getItem('formData'));
 
         let bookList;
@@ -209,6 +208,10 @@ function CancelUpdate(event) {
     document.getElementById("update").style.display = "none";
     document.getElementById("cancel").style.display = "none";
 
+    document.getElementById("title").style.backgroundColor = "#fff";
+    document.getElementById("author").style.backgroundColor = "#fff";
+    document.getElementById("pages").style.backgroundColor = "#fff";
+
     document.querySelector(".titleForm").textContent = "Add a new book";
 }
 
@@ -220,6 +223,10 @@ function ClearData(event) {
     document.getElementById("author").value = "";
     document.getElementById("pages").value = "";
     document.getElementById("read_no").checked = true;
+
+    document.getElementById("title").style.backgroundColor = "#fff";
+    document.getElementById("author").style.backgroundColor = "#fff";
+    document.getElementById("pages").style.backgroundColor = "#fff";
 
     localStorage.removeItem("formData");
 }
