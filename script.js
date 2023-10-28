@@ -49,16 +49,16 @@ function showData() {
         htmlCode += "<tr>";
         htmlCode += "<td>" + elem.title + "</td>";
         htmlCode += "<td>" + elem.author + "</td>";
-        htmlCode += "<td>" + elem.pages + "</td>";
+        htmlCode += "<td class='pages'>" + elem.pages + "</td>";
         if (elem.read) {
-            htmlCode += "<td>Read</td>";
+            htmlCode += "<td class='read'>Read</td>";
         } else {
-            htmlCode += "<td>Not Read</td>";
+            htmlCode += "<td class='read'>Not Read</td>";
         }
         htmlCode +=
-            '<td><button onclick="deleteData(' + index + ')" class="btn" title="delete"><i class="fa-solid fa-xmark"></i></button></td>';
+            '<td class="delete"><button onclick="deleteData(' + index + ')" class="btn" title="delete"><i class="fa-solid fa-xmark"></i></button></td>';
         htmlCode +=
-            '<td><button onclick="updateData(' + index + ')" class="btn" title="update"><i class="fa-regular fa-pen-to-square"></i></button></td>';
+            '<td class="update"><button onclick="updateData(' + index + ')" class="btn" title="update"><i class="fa-regular fa-pen-to-square"></i></button></td>';
     });
 
     document.querySelector('#libTable tbody').innerHTML = htmlCode;
@@ -138,7 +138,11 @@ function deleteData(index) {
 function updateData(index) {
     // Submit btn will hide, Update btn will show to update Data in local storage
     document.getElementById("submit").style.display = "none";
+    document.getElementById("clear").style.display = "none";
     document.getElementById("update").style.display = "block";
+    document.getElementById("cancel").style.display = "block";
+
+    document.querySelector(".titleForm").textContent = "Edit a book info";
 
     let bookList;
     if (localStorage.getItem("bookList") == null) {
@@ -156,7 +160,8 @@ function updateData(index) {
         document.getElementById("read_no").checked = true;
     }
 
-    document.querySelector("#update").onclick = function () {
+    document.querySelector("#update").onclick = function (event) {
+        event.preventDefault();
         if (validateForm() == true) {
             bookList[index].title = document.getElementById("title").value;
             bookList[index].author = document.getElementById("author").value;
@@ -178,19 +183,57 @@ function updateData(index) {
             document.getElementById("read_no").checked = true;
 
             document.getElementById("submit").style.display = "block";
+            document.getElementById("clear").style.display = "block";
             document.getElementById("update").style.display = "none";
+            document.getElementById("cancel").style.display = "none";
+
+            document.querySelector(".titleForm").textContent = "Add a new book";
         }
 
     }
 }
 
-// // add start data to local storage
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-const HarryPotter3 = new Book('Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling', '370', true);
+// function to cancel update
+function CancelUpdate(event) {
+    event.preventDefault();
 
-const startData = [theHobbit, HarryPotter3];
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value = "";
+    document.getElementById("read_no").checked = true;
 
-if (localStorage.getItem("bookList") == null) {
+    localStorage.removeItem("formData");
+
+    document.getElementById("submit").style.display = "block";
+    document.getElementById("clear").style.display = "block";
+    document.getElementById("update").style.display = "none";
+    document.getElementById("cancel").style.display = "none";
+
+    document.querySelector(".titleForm").textContent = "Add a new book";
+}
+
+// function to clear Data from the form
+function ClearData(event) {
+    event.preventDefault();
+
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value = "";
+    document.getElementById("read_no").checked = true;
+
+    localStorage.removeItem("formData");
+}
+
+// add start data to local storage
+const one = new Book('The Last Wish', 'A. Sapkowski', 288, false);
+const two = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+const three = new Book('The Fellowship of the Rings', 'J.R.R. Tolkien', 423, true);
+const four = new Book('Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling', '370', false);
+const five = new Book("Alice's Adventures in Wonderland", 'L. Carroll', 196, true)
+
+const startData = [one, two, three, four, five];
+
+if (localStorage.getItem("bookList") == null || JSON.parse(localStorage.getItem("bookList")).length == 0) {
     localStorage.setItem(`bookList`, JSON.stringify(startData));
 }
 
