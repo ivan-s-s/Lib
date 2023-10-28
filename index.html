@@ -21,12 +21,12 @@
             <table id="libTable">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Author</th>
+                        <th class="th-title">Title</th>
+                        <th class="th-author">Author</th>
                         <th>Pages</th>
                         <th>Read</th>
-                        <th></th>
-                        <th></th>
+                        <th>Delete</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody class="t_body">
@@ -34,20 +34,21 @@
             </table>
         </div>
         <div class="container">
-            <form id="form1">
-                <fieldset>
-                    <legend>Add a new book note</legend>
+            <form id="form1" class="form">
+                <div></div>
+                <fieldset class="formField">
+                    <legend class="titleForm">Add a new book</legend>
 
-                    <label for="title">Title</label><br>
+                    <label for="title" class="label">Title</label><br>
                     <input type="text" id="title" name="title" value="" autocomplete="off"><br>
 
-                    <label for="author">Author</label><br>
+                    <label for="author" class="label">Author</label><br>
                     <input type="text" id="author" name="author" value="" autocomplete="off"><br>
 
-                    <label for="pages">Pages</label><br>
+                    <label for="pages" class="label">Pages</label><br>
                     <input type="number" id="pages" name="pages" value="" autocomplete="off"><br>
 
-                    <fieldset>
+                    <fieldset id="read">
                         <legend>Have you read the book?</legend>
                         <label for="read_yes">Yes</label>
                         <input type="radio" class="read" id="read_yes" name="read" value="true">
@@ -55,14 +56,21 @@
                         <input type="radio" class="read" id="read_no" name="read" value="false" checked>
                     </fieldset><br>
 
-                    <button id="submit" onclick="AddData(event)">Add</button>
-                    <button id="update">Update</button>
+                    <div class="formBtns">
+                        <button id="submit" onclick="AddData(event)">Add</button>
+                        <button id="update">Update</button>
+                        <button id="clear" onclick="ClearData(event)">Clear</button>
+                        <button id="cancel" onclick="CancelUpdate(event)">Cancel</button>
+                    </div>
                 </fieldset>
+                <div></div>
             </form>
         </div>
     </main>
     <footer>
-
+        Copyright &#169;
+        <script>document.write(new Date().getFullYear())</script>
+        <a href="https://github.com/ivan-s-s">&nbsp;IvanS <i class="fa-brands fa-github"></i></a>
     </footer>
 </body>
 
